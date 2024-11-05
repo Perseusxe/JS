@@ -32,24 +32,48 @@
 //     index ++;
 // }console.log(ages);
 
-let numbers=[18, 21, 22, 20, 23, 36, 79, 25, 90, 45, 30, 11, 6, 76, 67]
-let sum=0;
-index=0;
-while(index<numbers.length){
-    sum=numbers[index]+sum;
-    index++
-}console.log(sum);
+// let numbers=[18, 21, 22, 20, 23, 36, 79, 25, 90, 45, 30, 11, 6, 76, 67]
+// let sum=0;
+// index=0;
+// while(index<numbers.length){
+//     sum=numbers[index]+sum;
+//     index++
+// }console.log(sum);
 
-let biggest=numbers[0];
-for(let i=0; i < numbers.length; i++){
-    if(numbers[i]>biggest){
-        biggest=numbers[i];
-    }
-}console.log(biggest);
+// let biggest=numbers[0];
+// for(let i=0; i < numbers.length; i++){
+//     if(numbers[i]>biggest){
+//         biggest=numbers[i];
+//     }
+// }console.log(biggest);
 
-let smallest=numbers[0];
-for(let i=0; i<numbers.length; i++){
-    if(numbers[i]<smallest){
-        smallest=numbers[i]
-    }
-}console.log(smallest)
+// let smallest=numbers[0];
+// for(let i=0; i<numbers.length; i++){
+//     if(numbers[i]<smallest){
+//         smallest=numbers[i]
+//     }
+// }console.log(smallest);
+
+
+const n=5;
+let result= "";
+for(k=0; k<n; k++){
+let i=0;
+while(i<n){
+    result=result+"* ";
+    i++;
+}
+result=result+"/n"
+}
+
+
+
+// let n=1;
+// let result= "";
+// for(k=0; k<n; k++){
+// let i=0;
+// while(i<n){
+//     result=result+"* ";
+//     i++;
+// }console.log(result)
+// }
