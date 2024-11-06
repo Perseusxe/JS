@@ -101,8 +101,9 @@
 // //Дурын тоо өгөгдөхөд  тухайн тооны урвууг хэвлэ. Зөвхөн эерэг то байна.
 // let a=1,
 // b=2,
-// c=3;
-// while(z>0) {
+// c=3,
+// z=0;
+// while(z>=0) {
 //   m= a , b , c;
 //   z= c , b , a;
 //   console.log(m , z)
@@ -187,9 +188,9 @@
 //     sum=number+sum;
 //     console.log(sum)
 // }
-let i=0;
-var star="*"
-while(i<=7){
-    i=i+1;
-    console.log(star.repeat(i))
-}
+// let i=0;
+// var star="*"
+// while(i<=7){
+//     i=i+1;
+//     console.log(star.repeat(i))
+// }
