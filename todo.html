@@ -7,6 +7,13 @@
   </head>
   <body>
     <div id="tasks" style="border: black 1px;"></div>
+    <button onclick="editName()">Edit Name</button>
+    <button onclick="addOne()">Add</button>
+    <button onclick="editStatus()">Change Status</button>
+    <button onclick="deleteOne()">Delete</button>
+    <button onclick="deleteAll()">Delete All</button>
+   
+    
     <script>
       let todos = [];
       const tasks = [
@@ -26,10 +33,14 @@
       function editName(index, name) {
         let item = todos[index];
         item.name = name;
+        const nameContainerElement = document.getElementById("name-container");
+        nameContainerElement.innerText =name
       }
 
       function deleteOne(index) {
         let temp = [];
+        const nameContainerElement = document.getElementById("name-container");
+        nameContainerElement.innerText = "";
 
         for (let i = 0; i < todos.length; i++) {
           if (i != index) {
