@@ -40,5 +40,5 @@ addOne({ name: "Learn JS", status: "TODO" });
 addOne({ name: "Read a Book", status: "TODO" });
 editStatus(2, "DONE");
 editName(0, "Gym");
-deleteOne();
+deleteOne();z
 console.log(todos);
