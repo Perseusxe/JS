@@ -1,44 +1,29 @@
-let todos = [];
-
-// Todo add
-function addOne(newTodo) {
-  todos.push(newTodo);
-}
-
-// Change Status : Func
-function editStatus(index, status) {
-  let item = todos[index];
-  item.status = status;
-}
-
-// Change Name : Func
-function editName(index, name) {
-  let item = todos[index];
-  item.name = name;
-}
-
-// Delete one item
-function deleteOne(index) {
-  let temp = [];
-
-  for (let i = 0; i<todos.length; i++) {
-if(i != index) {
-    temp.push(todos[i]);
-}
+function addTask() {
+  const taskInput = document.getElementById("taskInput");
+  const taskList = document.getElementById("taskList");
+  const text = document.getElementById("text");
+  if (taskInput.value.trim() !== "") {
+    const li = document.createElement("li");
+    li.className = "todo-item";
+    // ajliin ner
+    const taskText = document.createElement("span");
+    taskText.innerText = taskInput.value;
+    li.appendChild(taskText);
+    const checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+ 
+    // ustgah towch
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
+    deleteButton.onclick = function () {
+      taskList.removeChild(li);
+    };
+    li.appendChild(checkBox);
+    li.appendChild(deleteButton);
+ 
+    taskList.appendChild(li);
+    taskInput.value = "";
+  } else {
+    alert("Hello!");
   }
-  todos = temp;
 }
-
-// Delete All
-function deleteAll() {
-    todos = [];
-}
-
-// Running Application
-addOne({ name: "Gym", status: "TODO" });
-addOne({ name: "Learn JS", status: "TODO" });
-addOne({ name: "Read a Book", status: "TODO" });
-editStatus(2, "DONE");
-editName(0, "Gym");
-deleteOne();z
-console.log(todos);
