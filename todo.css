@@ -7,6 +7,7 @@ body {
   background-color: #101010;
   border-radius: 20px;
   display: flex;
+  flex-direction: column;
   margin-right: 30px;
   margin-left: 30px;
 }
@@ -44,6 +45,65 @@ body {
   background-color: #1e1e1e;
 }
 .modal-content > input {
-  width: 290px;
+  max-width: 290px;
+  width: 100%;
   height: 30px;
+  background-color: transparent;
+  border-color: #999999;
+  color: #999999;
+}
+.modal-content > select {
+  max-width: 295px;
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border-color: #999999;
+}
+.tasks {
+  margin-left: 20px;
+  margin-top: 10px;
+  height: fit-content;
+  width: fit-content;
+}
+.todo-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  height: 50px;
+  width: 300px;
+}
+.todo-item p {
+  max-width: 200px;
+  width: 100%;
+}
+.todo-item img {
+  width: 25px;
+  height: 25px;
+}
+#modal2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  display: none;
+}
+.modal-open {
+  display: block;
+}
+.modal-content1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 406px;
+  border-radius: 16px;
+  background-color: #1e1e1e;
 }

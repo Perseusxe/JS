@@ -1,94 +1,112 @@
-const STATUS = "TODO" || "DONE";
 let todos = [];
- 
-function render() {
-  const todoList = document.querySelector("#todos");
-  const tasklist = todoList.querySelector("#tasks");
- 
-  console.log(todoList);
- 
-  taskList.innerHTML = "";
- 
-  for (let i = 0; i < todos.length; i++) {
-    const item = todos[i];
- 
-    const element = document.createElement("div");
-    element.classList.add("todo-item");
- 
-    const titleEl = document.createElement("p");
-    titleEl.innerText = item.name;
- 
-    const btnEl = document.createElement("button");
-    btnEl.innerText = "Edit";
-    btnEl.onclick = function () {
-      const newName = prompt("Enter new name");
-      editName(i, newName);
-    };
- 
-    const deletBtnEl = document.createElement("button");
-    deletBtnEl.innerText = "Remove";
-    deletBtnEl.onclick = function () {
-      deleteOne(i);
-      render();
-    };
- 
-    element.appendChild(titleEl);
-    element.appendChild(btnEl);
-    element.appendChild(deletBtnEl);
-    todoList.appendChild(element);
-  }
-}
-function addToDo() {
-  const modal = document.querySelector("#modal");
-  modal.style.display = "flex";
-  // const input = prompt("Enter todo name");
-  // todos.push({ name: input, status: "TODO" });
-  // render();
-}
- 
-function editStatus(index, status) {
-  let item = todos[index];
-  item.status = status;
-}
-function deleteOne(index) {
-  let temp = [];
-  for (let i = 0; i < todos.length; i++) {
-    if (i != index) {
-      temp.push(todos[i]);
-    }
-  }
-  todos = temp;
-  render();
-}
- 
-function editName(index, name) {
-  let item = todos[index];
-  item.name = name;
-  render();
-}
- 
-function deleteAll() {
-  todos = [];
-  render();
-}
- 
-function countDone() {
-  let count = 0;
-  for (let i = 0; i < todos.length; i++) {
-    let item = todos[i];
-    if (item.status === "DONE") {
-      count++;
-    }
-  }
-  return count;
-}
- 
-function saveToDo() {
-  const inputValue = document.getElementById("task-name").value;
-  todos.push = { name: inputValue, status: "todo" };
- 
-  const modal = document.querySelector("#modal");
-  modal.Style.display = "block";
 
+
+function render() {
+
+  const containers = ['todo-list', 'in-progress-list', 'done-list', 'blocked-list'];
+  containers.forEach(containerId => {
+    const taskList = document.getElementById(containerId);
+    taskList.innerHTML = ''; 
+  });
+
+
+  todos.forEach((item, index) => {
+    const taskElement = createTaskElement(item, index);
+    
+    // Find the correct container based on the task status
+    const taskList = document.getElementById(`${item.status}-list`);
+    taskList.appendChild(taskElement); 
+  });
+}
+
+
+function createTaskElement(item, index) {
+  const element = document.createElement('div');
+  element.classList.add('todo-item');
+
+
+  const titleEl = document.createElement('p');
+  titleEl.style.color = 'white';
+  titleEl.innerText = item.name;
+
+
+  const btnEl = document.createElement('img');
+  btnEl.src = 'edit.png';
+
+  btnEl.onclick = function() {
+    const newName = prompt('Enter new task name', item.name);
+    if (newName) {
+      editName(index, newName);
+    }
+  };
+
+
+  const deleteBtnEl = document.createElement('img');
+  deleteBtnEl.src = 'delete.png';
+
+  deleteBtnEl.onclick = function() {
+    deleteOne(index);
+  };
+
+
+  element.appendChild(titleEl);
+  element.appendChild(btnEl);
+  element.appendChild(deleteBtnEl);
+
+  return element;
+}
+
+
+function addToDo() {
+  const modal = document.getElementById('modal');
+  modal.style.display = 'flex';
+}
+
+
+function closeModal() {
+  const modal = document.getElementById('modal');
+  modal.style.display = 'none';
+}
+
+
+function saveToDo() {
+  const inputValue = document.getElementById('task-name').value;
+  const statusValue = document.getElementById('task-status').value;
+
+
+  if (inputValue.trim() !== '') {
+    todos.push({ name: inputValue, status: statusValue });
+
+
+    document.getElementById('task-name').value = '';
+    document.getElementById('task-status').value = 'todo';
+
+
+    closeModal();
+    render();
+  }
+}
+
+function editName(index, newName) {
+  todos[index].name = newName;
+  render(); 
+}
+
+
+function deleteOne(index) {
+  todos.splice(index, 1); 
   render();
 }
+
+
+function countDone() {
+  return todos.filter(task => task.status === 'done').length;
+}
+document.getElementById('modal').addEventListener('click', (event) => {
+  if (event.target === document.getElementById('modal')) {
+    closeModal();
+  }
+});
+
+
+render();
