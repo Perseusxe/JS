@@ -34,13 +34,8 @@ function createTaskElement(item, index) {
   btnEl.src = 'edit.png';
 
   btnEl.onclick = function() {
-    const newName = prompt('Enter new task name', item.name);
-    if (newName) {
-      editName(index, newName);
-    }
+    openEditModal(index);
   };
-
-
   const deleteBtnEl = document.createElement('img');
   deleteBtnEl.src = 'delete.png';
 
@@ -55,8 +50,30 @@ function createTaskElement(item, index) {
 
   return element;
 }
+function openEditModal(index) {
+  const modal = document.getElementById("modal2");
+  document.getElementById("edit-name").value = todos[index].name;
+  modal.style.display = "flex";
+  editNameInput.value = todos[index].name;
+  editNameInput.dataset.index = index;
 
-
+  document.getElementById("save-edit-button").onclick = function () {
+    const newName = document.getElementById("edit-name").value;
+    editName(index, newName);
+    closeEditModal();
+  };
+}
+function closeEditModal() {
+  const modal2 = document.getElementById("modal2");
+  modal2.style.display = "none";
+}
+function editName(index, newName) {
+  todos[index].name = newName;
+  render();
+}
+function saveEdit() {
+  const inputValue = document.getElementById('task-name').value;
+}
 function addToDo() {
   const modal = document.getElementById('modal');
   modal.style.display = 'flex';
@@ -66,8 +83,8 @@ function addToDo() {
 function closeModal() {
   const modal = document.getElementById('modal');
   modal.style.display = 'none';
+  
 }
-
 
 function saveToDo() {
   const inputValue = document.getElementById('task-name').value;
@@ -87,11 +104,6 @@ function saveToDo() {
   }
 }
 
-function editName(index, newName) {
-  todos[index].name = newName;
-  render(); 
-}
-
 
 function deleteOne(index) {
   todos.splice(index, 1); 
@@ -107,6 +119,9 @@ document.getElementById('modal').addEventListener('click', (event) => {
     closeModal();
   }
 });
-
+function editModal() {
+  const modal = document.getElementById('modal2');
+  modal.style.display = 'flex';
+}
 
 render();
