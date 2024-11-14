@@ -51,28 +51,23 @@ function createTaskElement(item, index) {
   return element;
 }
 function openEditModal(index) {
+  currentEditIndex = index;
   const modal = document.getElementById("modal2");
   document.getElementById("edit-name").value = todos[index].name;
   modal.style.display = "flex";
-  editNameInput.value = todos[index].name;
-  editNameInput.dataset.index = index;
-
-  document.getElementById("save-edit-button").onclick = function () {
-    const newName = document.getElementById("edit-name").value;
-    editName(index, newName);
-    closeEditModal();
   };
-}
+
 function closeEditModal() {
   const modal2 = document.getElementById("modal2");
   modal2.style.display = "none";
 }
-function editName(index, newName) {
-  todos[index].name = newName;
-  render();
-}
 function saveEdit() {
-  const inputValue = document.getElementById('task-name').value;
+  if (currentEditIndex !== null) { 
+    const inputValue = document.getElementById('edit-name').value;
+    todos[currentEditIndex].name = inputValue;
+    render();
+    closeEditModal();
+  }
 }
 function addToDo() {
   const modal = document.getElementById('modal');

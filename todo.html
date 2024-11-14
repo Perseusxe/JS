@@ -9,7 +9,8 @@
   <body style="background-color: #1c1c1c">
     <div style="display: flex; justify-content: end">
       <button
-        onclick="addToDo()"x
+        onclick="addToDo()"
+        x
         id="btn-add-task"
         style="
           background-color: #00a300;
@@ -29,7 +30,7 @@
       </button>
     </div>
     <div style="display: flex; justify-content: center">
-      <div class="container" id="todos" >
+      <div class="container" id="todos">
         <div class="container-top">
           <div
             style="
@@ -44,11 +45,10 @@
           </div>
         </div>
         <div class="tasks" id="todo-list">
-          <div class="todo-item" id="todo-item">
-          </div>
-          </div>
+          <div class="todo-item" id="todo-item"></div>
+        </div>
       </div>
-      <div class="container" id="in-progress" >
+      <div class="container" id="in-progress">
         <div class="container-top">
           <div
             style="
@@ -63,11 +63,10 @@
           </div>
         </div>
         <div class="tasks" id="in-progress-list">
-          <div class="todo-item" id="todo-item">
-          </div>
-          </div>
+          <div class="todo-item" id="todo-item"></div>
+        </div>
       </div>
-      <div class="container" id="done" >
+      <div class="container" id="done">
         <div class="container-top">
           <div
             style="
@@ -82,11 +81,10 @@
           </div>
         </div>
         <div class="tasks" id="done-list">
-          <div class="todo-item" id="todo-item">
-          </div>
-          </div>
+          <div class="todo-item" id="todo-item"></div>
+        </div>
       </div>
-      <div class="container" id="blocked" >
+      <div class="container" id="blocked">
         <div class="container-top">
           <div
             style="
@@ -101,16 +99,20 @@
           </div>
         </div>
         <div class="tasks" id="blocked-list">
-          <div class="todo-item" id="todo-item">
-          </div>
+          <div class="todo-item" id="todo-item"></div>
         </div>
       </div>
     </div>
     <div id="modal">
       <div class="modal-content">
-        <h2 style="color: white; margin-bottom: 20px;">Enter Task</h2>
-        <input type="text" id="task-name" placeholder="Task Name..."/>
-        <select id="task-status" value="todo" placeholder="Select Status" style="color: #999999; margin-top: 10px; margin-bottom: 60px;">
+        <h2 style="color: white; margin-bottom: 20px">Enter Task</h2>
+        <input type="text" id="task-name" placeholder="Task Name..." />
+        <select
+          id="task-status"
+          value="todo"
+          placeholder="Select Status"
+          style="color: #999999; margin-top: 10px; margin-bottom: 60px"
+        >
           <option value="Select-tatus">Select Status</option>
           <option value="todo">To Do</option>
           <option value="in-progress">In Progress</option>
@@ -131,14 +133,24 @@
         </button>
       </div>
     </div>
-    <div id="modal2" class="modal-content1">
-      <h2 style="color: aqua;">Edit Task Name:</h2>
-      <input type="text" id="edit-name">
-      <button onclick="saveEdit()"style="background-color: #00a300;
-      width: 300px;
-      height: 44px;
-      border-radius: 4px;
-      margin-bottom: 30px;">Save</button>
+    <div id="modal2">
+      <div class="modal-content1">
+        <h2 style="color: white">Edit Task Name:</h2>
+        <input type="text" id="edit-name" />
+        <button
+          onclick="saveEdit()"
+          style="
+            background-color: #00a300;
+            width: 300px;
+            height: 44px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            margin-top: 30px;
+          "
+        >
+          Save
+        </button>
+      </div>
     </div>
     <script src="todo.js"></script>
   </body>
